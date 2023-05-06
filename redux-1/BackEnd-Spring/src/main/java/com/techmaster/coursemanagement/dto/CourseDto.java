@@ -5,6 +5,7 @@ import com.techmaster.coursemanagement.model.User;
 import lombok.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public class CourseDto {
     private Integer price;
     private Double rating;
     private User user;
-
+//    private List<Category> categoriesName;
     public CourseDto(Integer id, String name, String description, String type, String thumbnail, Integer price, Double rating, Object user) {
         this.id = id;
         this.name = name;
@@ -29,7 +30,7 @@ public class CourseDto {
         this.thumbnail = thumbnail;
         this.price = price;
         this.rating = rating;
-
+//        this.categories = categories;
         // Sử dụng Jackson để conver từ chuỗi JSON -> Object
         if (user != null) {
             ObjectMapper mapper = new ObjectMapper();
@@ -39,5 +40,20 @@ public class CourseDto {
                 this.user = null;
             }
         }
+//        if(categories.size() > 0){
+//            ObjectMapper mapper = new ObjectMapper();
+//            List<Category> categoryNameList = categories.stream()
+//                    .map(category -> {
+//                        try {
+//                            return mapper.readValue((String)category, Category.class);
+//                        } catch (JsonProcessingException e) {
+//                            e.printStackTrace();
+//                        }
+//                        return null;
+//                    })
+//                    .collect(Collectors.toList());
+//            this.categoriesName = categoryNameList;
+//        }
+
     }
 }

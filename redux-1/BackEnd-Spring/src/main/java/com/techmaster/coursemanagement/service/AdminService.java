@@ -123,4 +123,11 @@ public class AdminService {
                     throw new BadRequest("Khong tim thay id User");
                 });
     }
+
+    public List<Category> getAllCategory() {
+        return categoryRepository.findAll();
+    }
+    public List<User> getAllUser(){
+        return userRepository.findAll();
+    }
 }
